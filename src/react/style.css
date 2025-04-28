@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+
+/* Force sans-serif font to ensure Tailwind styles are applied */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #212F44; /* Dark blue similar to SSB64 logo background */
+  /* 
+     SSB64 Inspired Color Palette:
+     - #212F44 - Dark blue (background)
+     - #EF443A - Red (main logo color)
+     - #FEDB5F - Yellow/Gold (logo accent)
+     - #30B6F9 - Bright blue (logo accent)
+     - #6558F5 - Purple (logo accent)
+     - #2E524E - Dark teal (alternative background)
+  */
+}
+
+.logo-wrapper img {
+    max-height: 500px;
+}
+
+:root {
+  --ssb-red: #EF443A;
+  --ssb-yellow: #FEDB5F;
+  --ssb-blue: #30B6F9;
+  --ssb-purple: #6558F5;
+  --ssb-dark-blue: #212F44;
+}
