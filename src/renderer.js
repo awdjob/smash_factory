@@ -1,4 +1,4 @@
-// Access the exposed API functions
+// Access the exposed API functions. Types are defined in the globals.d.ts file.
 const { listProcesses, scanMemory, readMemory, readMemoryAsArray, writeMemory } = window.sfAPI;
 
 // DOM elements
@@ -13,10 +13,27 @@ const valueTypeSelect = document.getElementById('value-type');
 const writeButton = document.getElementById('write-button');
 const writeResultElement = document.getElementById('write-result');
 
-// Store the process ID for reuse
+/**
+ * @typedef Process
+ * @type {object}
+ * @property {number} pid - The process ID of the Project64 emulator.
+ * @property {string} name - The name of the Project64 emulator.
+ */
+
+/**
+ * The process ID of the Project64 emulator.
+ * 
+ * @type {Process | null}
+ */
 let pj64Process = null;
 
-// Function to check for Project64 process
+/**
+ * Checks if Project64 emulator is running and updates UI elements accordingly.
+ * 
+ * Sets global pj64Process variable if found.
+ * 
+ * @returns {void}
+ */
 function checkForProject64() {
   listProcesses()
     .then(processes => {
@@ -40,7 +57,11 @@ function checkForProject64() {
     });
 }
 
-// Function to convert hex or decimal string to number
+/**
+ * Convert hex or decimal string to number.
+ * @param {string|number} value - The value to convert.
+ * @returns {number} The converted value.
+ */
 function parseInputValue(value) {
   if (typeof value !== 'string') return value;
   
@@ -55,7 +76,12 @@ function parseInputValue(value) {
   return parseInt(value, 10);
 }
 
-// Function to write a value to memory
+/**
+ * Writes a value to Project64's memory at the specified address.
+ * Supports various data types (int8, uint8, int16, uint16, int32, uint32, float).
+ * 
+ * @returns {void}
+ */
 function writeToMemory() {
   if (!pj64Process) {
     writeResultElement.textContent = 'Project64 not detected. Cannot write to memory.';
@@ -209,7 +235,11 @@ function writeToMemory() {
   }
 }
 
-// Function to scan for specific value
+/**
+ * Scans Project64's memory for a specific value and displays the results.
+ * 
+ * @returns {void}
+ */
 function scanForValue() {
   if (!pj64Process) {
     scanResultsElement.textContent = 'Project64 not detected. Cannot scan.';
